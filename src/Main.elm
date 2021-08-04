@@ -16,12 +16,8 @@ main =
       update = update
     }
 
-
-
-
 type Messages =
-  Change
-    | SetNewName String
+   SetNewName String
     | SetDeleteName String
     | DeleteTheName
     | Add
@@ -34,47 +30,44 @@ init =
     name = "Robb"
     , newNameValue = ""
     , updateMe = "Change Me!"
-    , nameList = ["Robb", "James"]
+    , nameList =  [ "Robb", "James" ]
     , deleteNameValue = ""
   }
-
 
 view model =
   div [ class "container" ]
     [
       div [] [
         div [ class "row" ][
-          div [class "col-6"][
-            div [class "card p-1 text-center mt-5" ][
-              h3 [][text "List Of Names"]
-              , ul [] (List.map viewName model.nameList)
+          div [ class "col-6" ][
+            div [ class "card p-1 text-center mt-5" ][
+              h3 [][ text "List Of Names" ]
+              , ul [] ( List.map viewName model.nameList )
             ]
           ]
-          , div [class "col-6 mt-5"][
-            div [ class "card-right card"][
-              div [] [
-                  h4 [][text "Controls"]
-                  , h5 [][text "Add A Name"]
-                  , input [onInput SetNewName , class "form-control"] []
-                  , button [onClick Add , class "btn btn-primary mt-2 mb-4"] [text "Add Name"]
-                ]
-                , div [] [
-                   h5 [][text "Delete A Name"]
-                  , input [onInput SetDeleteName , class "form-control"] []
-                  , button [onClick Delete , class "btn btn-primary mt-2 mb-4"] [text "Delete Name"]
-                ]
-            ]
-
+          , div [ class "col-6 mt-5" ][
+              div [ class "card-right card" ][
+                div [] [
+                    h4 [][ text "Controls" ]
+                    , h5 [][ text "Add A Name" ]
+                    , input [ onInput SetNewName , class "form-control" ] []
+                    , button [ onClick Add , class "btn btn-primary mt-2 mb-4" ] [ text "Add Name" ]
+                  ]
+                  , div [] [
+                     h5 [][ text "Delete A Name" ]
+                    , input [ onInput SetDeleteName , class "form-control" ] []
+                    , button [ onClick Delete , class "btn btn-primary mt-2 mb-4" ] [ text "Delete Name" ]
+                  ]
+              ]
           ]
         ]
         , div [ class "changeMe card" ][
-          h3 [][ text model.updateMe ]
-          , div [][
-            input [onInput SetUpdateText , class "form-control"] []
+            h3 [][ text model.updateMe ]
+            , div [][
+              input [ onInput SetUpdateText , class "form-control" ] []
             ]
           ]
       ]
-
     ]
 
 viewName name =
@@ -85,8 +78,6 @@ changeIt text =
 
 update msg model =
   case msg of
-    Change ->
-      { model | name = changeIt model.newNameValue }
     SetNewName theText ->
       { model | newNameValue = theText}
     SetDeleteName theText ->

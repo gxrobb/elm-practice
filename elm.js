@@ -5173,10 +5173,6 @@ var $elm$browser$Browser$sandbox = function (impl) {
 			view: impl.view
 		});
 };
-var $elm$core$Basics$neq = _Utils_notEqual;
-var $author$project$Main$changeIt = function (text) {
-	return (text !== '') ? text : 'Please Enter A Name';
-};
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -5188,15 +5184,10 @@ var $elm$core$List$filter = F2(
 			_List_Nil,
 			list);
 	});
+var $elm$core$Basics$neq = _Utils_notEqual;
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 'Change':
-				return _Utils_update(
-					model,
-					{
-						name: $author$project$Main$changeIt(model.newNameValue)
-					});
 			case 'SetNewName':
 				var theText = msg.a;
 				return _Utils_update(
