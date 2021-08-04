@@ -7,15 +7,14 @@ import Html.Events exposing (..)
 import Html.Attributes exposing (..)
 import Quote
 
+
 main =
-  Browser.element
+  Browser.sandbox
     {
       init = init,
       view = view,
-      update = update,
-      subscriptions = Quote.subscriptions
+      update = update
     }
-
 
 
 
@@ -30,7 +29,7 @@ init =
   {
     name = "Robb"
     , newNameValue = ""
-    , quote = Quote.init
+    , quote = ""
   }
 
 view model =
@@ -67,4 +66,4 @@ update msg model =
     DeleteTheName ->
       { model | name = "" }
     GetQuote ->
-      { model | quote = Quote.GotText }
+      { model | quote = "3" }
